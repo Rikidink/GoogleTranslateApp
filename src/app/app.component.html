@@ -1,0 +1,45 @@
+<form>
+  <div class="mb-3">
+    <label for="inputEnglish" class="form-label">Text in English</label>
+    <input type="text" class="form-control" id="inputEnglish" [(ngModel)]="text" required>
+  </div>
+
+  Select a language: <br>
+  <select [(ngModel)]="target">
+    <option *ngFor="let t of targetLanguages" [value]="t">{{t}}</option>
+  </select>
+
+  Select a second language: <br>
+  <select [(ngModel)]="target2">
+    <option *ngFor="let t of targetLanguages" [value]="t">{{t}}</option>
+  </select>
+
+  <button type="button" class="btn btn-primary" (click)="sendTranslate()">Primary</button>
+
+
+
+  <!-- <table class="table table-primary">
+    <tr>
+        <th>English Text</th>
+        <th>Translated</th>
+
+    </tr>
+        <tr *ngFor="let t of translated; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{t.original}}</td>
+            <td>{{t.translated}}</td>
+        </tr>
+  </table> -->
+
+  <div *ngFor="let t of translated; let i = index">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">English to {{t.target}} and {{t.target2}}</h5>
+        <p class="card-text">
+          English: {{t.text}} <br>
+          Translated: {{t.translated}} <br>
+          Translated2: {{t.translated2}}</p>
+      </div>
+    </div>
+  </div>
+</form>
